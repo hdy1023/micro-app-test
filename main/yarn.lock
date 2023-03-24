@@ -1029,10 +1029,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@micro-zoe/micro-app@^1.0.0-alpha.9":
-  version "1.0.0-alpha.9"
-  resolved "https://registry.npmmirror.com/@micro-zoe/micro-app/-/micro-app-1.0.0-alpha.9.tgz#e6dbe7130fa2091fa9c88e370da33f093807622f"
-  integrity sha512-/wIzf3jVzDVeg6eb0f2Fj08Mp2OKwucfHldJaUSb/KeC1LdA1yKNEAqXAfUDzmcQ7RAPrGuM5fGZNJSlj3nPSQ==
+"@micro-zoe/micro-app@^1.0.0-beta.0":
+  version "1.0.0-beta.0"
+  resolved "https://registry.npmmirror.com/@micro-zoe/micro-app/-/micro-app-1.0.0-beta.0.tgz#4280efb4d4429eb3ebe94cc1846cfbb3be06f8b9"
+  integrity sha512-YeTHGn/CN6ur8SpHJ1DeNQ31oyDVIQIZx8PAnX0X8R1AgEgR+ySmHwxSbDGOTlXPrM3Txbg1Dx4vWZ4Jkx8Jqg==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

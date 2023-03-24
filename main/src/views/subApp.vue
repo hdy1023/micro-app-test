@@ -22,9 +22,14 @@ export default {
     }, 0); */
 
     /* 最后发现，如果不replaceState，延时过小就不会出现上述BUG */
-    setTimeout(() => {
+    /* setTimeout(() => {
       window.dispatchEvent(new PopStateEvent('popstate', { state: history.state }))
-    }, 0);
+    }, 0); */
+    
+    /* 新版本以上bug修复了，最新方案： */
+    /* 
+      在全局 beforeshow 生命周期中触发一边路由更新方法
+    */
   },
   watch:{
     $route(){
