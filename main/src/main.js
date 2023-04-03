@@ -20,7 +20,7 @@ microApp.start({
   }
 })
 Vue.config.productionTip = false
-
+// 我在github上 按下.键直接打开了网页版vscode 并完成了这行代码的提交
 new Vue({
   router,
   render: h => h(App),
