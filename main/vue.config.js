@@ -1,7 +1,7 @@
 module.exports = {
 
   devServer: {
-    port: 8180,
+    port: 9001,
   },
 }
 
