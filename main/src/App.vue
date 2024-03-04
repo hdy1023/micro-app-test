@@ -8,14 +8,10 @@
 export default {
   name: 'App',
   components: {
-    
+
   }
 }
 </script>
 
 <style>
-  .header{
-    height:50px;
-    background: #ccc;
-  }
 </style>

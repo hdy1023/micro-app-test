@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import pages from './../pages'
 Vue.use(Router)
 
 
@@ -9,16 +10,11 @@ export default new Router({
   scrollBehavior: () => ({
     y: 0
   }),
-  routes: [
-    {
-      path: '/pageE',
-      name: 'pageE',
-      component: (resolve) => require(['@/views/page1.vue'], resolve),
-    },
-    {
-      path: '/pageF',
-      name: 'pageF',
-      component: (resolve) => require(['@/views/page2.vue'], resolve),
-    },
-  ]
+  routes: pages.map(path => {
+    return {
+      path: '/'+path,
+      name: path,
+      component: (resolve) => require(['@/views/page.vue'], resolve),
+    }
+  })
 })

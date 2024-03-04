@@ -8,3 +8,5 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+console.log('app1.__MICRO_APP_BASE_ROUTE__:', window.__MICRO_APP_BASE_ROUTE__)

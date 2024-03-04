@@ -1,39 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/layout/index.vue'
+import microApp from '@micro-zoe/micro-app'
+import config, { routerBase } from './../config'
+import SubApp from '../views/subApp.vue'
+
+window.microApp = microApp
+microApp.start({
+  'disable-memory-router': config.native, // 关闭虚拟路由系统
+  'disable-patch-request': config.native, // 关闭对子应用请求的拦截
+})
 Vue.use(Router)
 
-// 公共路由
-export const constantRoutes = [
-  {
-    path: '/pageA',
-    name: '主应用-pageA',
-  },
-  {
-    path: '/pageB',
-    name: '主应用-pageB',
-  },
-  {
-    path: '/app1/pageC',
-    name: 'app1-pageC',
-  },
-  {
-    path: '/app1/pageD',
-    name: 'app1-pageD',
-  },
-  {
-    path: '/app2/pageE',
-    name: 'app2-pageE',
-  },
-  {
-    path: '/app2/pageF',
-    name: 'app2-pageF',
-  },
-]
-
+const appRoutes = config.apps.map(item => {
+  return {
+    path: config.native ? `${item.activeRule}/*` : item.activeRule,
+    name: item.name,
+    component: { mixins: [SubApp] },
+  }
+})
 export default new Router({
-  mode: 'history', 
-  base: '/main/',
+  mode: 'history',
+  base: routerBase,
   scrollBehavior: () => ({
     y: 0
   }),
@@ -52,16 +40,8 @@ export default new Router({
           name: 'pageB',
           component: (resolve) => require(['@/views/page2.vue'], resolve),
         },
-        {
-          path: '/app1/*',
-          component: (resolve) => require(['@/views/subApp.vue'], resolve),
-        },
-        {
-          path: '/app2/*',
-          component: (resolve) => require(['@/views/subApp2.vue'], resolve),
-        },
+        ...appRoutes
       ]
     },
-
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div>子应用1  页面D</div>
+  <div>子应用2 {{$route.name}}</div>
 </template>
 
 <script>
