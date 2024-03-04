@@ -1,5 +1,5 @@
 const config = {
-  native: false,
+  native: true,
   keepAlive: true,
   apps: [
     {

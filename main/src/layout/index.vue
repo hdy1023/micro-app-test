@@ -66,25 +66,9 @@ export default {
 
   },
   methods: {
-    microJump (item) {
-      if (config.native) {
-        microApp.router.push({ name: item.appName, path: routerBase + item.path })
-      } else {
-        //虚拟路由下，子应用window.__MICRO_APP_BASE_ROUTE__为空，因此子应用路由不受baseroute配置影响（即便baseroute有值）
-        microApp.router.push({ name: item.appName, path: item.path })
-      }
-    },
     handleJump (item) {
       console.log('click menu item:',item)
-      if (this.$route.name === item.appName) {
-        this.microJump(item)
-      } else {
-        if (config.native) {
-          this.$router.push(item.path)
-        } else {
-          this.$router.push(`/${item.appName}?${item.appName}=${item.path}`)
-        }
-      }
+      this.$router.push(item.path)
     },
   }
 }
