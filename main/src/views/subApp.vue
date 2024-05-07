@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div>
-      <input v-model="path" /><button @click="handleJump">手动跳转</button>
-    </div>
-    <micro-app :name='name' :url='url' :keep-alive="config.keepAlive" :baseroute='baseroute' @beforeshow="beforeshow"></micro-app>
+    <micro-app :name='name' :url='url' :keep-alive="config.keepAlive" :baseroute='baseroute' @beforeshow="beforeshow" :router-mode='routerMode'></micro-app>
   </div>
 </template>
 
@@ -13,7 +10,6 @@ import config, { routerBase } from './../config'
 export default {
   data () {
     return {
-      path: '',
       name: '',
       url: '',
       baseroute: '',
@@ -21,14 +17,20 @@ export default {
     }
   },
   methods: {
-    handleJump () {
-      microApp.router.push({ name: this.name, path: this.path })
-    },
     beforeshow () {
+      console.log('keep-alive beforeshow', this.$route, 9999)
       this.$nextTick(() => {
         /* 1.0.0-rc.3 */
         /* window.dispatchEvent(new PopStateEvent('popstate', { state: history.state })) */
         /* microApp.router.push({ name: this.name, path: routerBase + this.$route.path }) */
+
+        /* 1.0.0-rc.5 */
+        if (this.routerMode === 'native') {
+          microApp.router.push({ name: this.name, path: routerBase + this.$route.path })
+        } else {
+          //虚拟路由开启下，子应用window.__MICRO_APP_BASE_ROUTE__为空，因此子应用路由不受baseroute配置影响（即便baseroute有值）
+          /* microApp.router.push({ name: this.name, path: item.path }) */
+        }
       })
     },
   },
@@ -39,6 +41,7 @@ export default {
       this.url = app.url
       this.name = app.name
       this.baseroute = routerBase + app.activeRule
+      this.routerMode = app.routerMode || 'native'
       console.log(app.name + ' component is created')
     }
     /* 0.X版本下功能正常 */
@@ -93,6 +96,14 @@ export default {
       /* 1.0.0-rc.3 */
       /* window.dispatchEvent(new PopStateEvent('popstate', { state: history.state })) */
       /* microApp.router.push({ name: this.name, path: routerBase + val.path }) */
+
+      /* 1.0.0-rc.5 */
+      if (this.routerMode === 'native') {
+        microApp.router.push({ name: this.name, path: routerBase + val.path })
+      } else {
+        //虚拟路由开启下，子应用window.__MICRO_APP_BASE_ROUTE__为空，因此子应用路由不受baseroute配置影响（即便baseroute有值）
+        /* microApp.router.push({ name: this.name, path: item.path }) */
+      }
     },
   }
 }

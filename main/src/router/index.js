@@ -7,14 +7,14 @@ import SubApp from '../views/subApp.vue'
 
 window.microApp = microApp
 microApp.start({
-  'disable-memory-router': config.native, // 关闭虚拟路由系统
-  'disable-patch-request': config.native, // 关闭对子应用请求的拦截
+  /* 'disable-memory-router': true, // 关闭虚拟路由系统*/
+  'disable-patch-request': true, // 关闭对子应用请求的拦截 
 })
 Vue.use(Router)
 
 const appRoutes = config.apps.map(item => {
   return {
-    path: config.native ? `${item.activeRule}/*` : item.activeRule,
+    path: item.routerMode === 'search' ? item.activeRule : `${item.activeRule}/*`,
     name: item.name,
     component: { mixins: [SubApp] },
   }

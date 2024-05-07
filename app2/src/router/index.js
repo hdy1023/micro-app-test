@@ -12,9 +12,20 @@ export default new Router({
   }),
   routes: pages.map(path => {
     return {
-      path: '/'+path,
+      path: '/' + path,
       name: path,
-      component: (resolve) => require(['@/views/page.vue'], resolve),
+      component: () => import('@/views/page.vue'),
     }
-  })
+  }).concat([
+    {
+      path: '/pageK' ,
+      name: 'pageK',
+      component: () => import('@/views/pageK.vue'),
+    },
+    {
+      path: '/pageL',
+      name: 'pageL',
+      component: () => import('@/views/pageL.vue'),
+    }
+  ])
 })
