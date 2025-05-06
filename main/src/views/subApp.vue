@@ -13,6 +13,7 @@ export default {
       name: '',
       url: '',
       baseroute: '',
+      routerMode: '',
       config
     }
   },
@@ -25,7 +26,9 @@ export default {
         /* microApp.router.push({ name: this.name, path: routerBase + this.$route.path }) */
 
         /* 1.0.0-rc.5 */
+        /* 1.0.0-rc.24 */
         if (this.routerMode === 'native') {
+          //window.dispatchEvent(new PopStateEvent('popstate', { state: history.state }))
           microApp.router.push({ name: this.name, path: routerBase + this.$route.path })
         } else {
           //虚拟路由开启下，子应用window.__MICRO_APP_BASE_ROUTE__为空，因此子应用路由不受baseroute配置影响（即便baseroute有值）
@@ -89,6 +92,15 @@ export default {
       4.microApp.router 做为PopStateEvent替代，希望能够兼容PopStateEvent的效果。
       5.microApp.router 能够在当前子应用未挂载时也可以调用，如未挂载主动挂载并完成对应子应用页面跳转，避免采取vue.router+microApp.router的冗余方式。
     */
+
+   /* 1.0.0-rc.24 发现问题 */
+   /* 
+      问题：
+      1.子应用样式加载异常，样式隔离处理后部分属性选择器css代码和原样式文件不一致
+      复现步骤：
+      1.子应用为vue2，使用了elementUi组件库。
+      2.加载子应用后，样式处理异常，部分属性选择器css代码和原样式文件不一致
+   */
   },
   watch: {
     $route (val) {
@@ -98,7 +110,9 @@ export default {
       /* microApp.router.push({ name: this.name, path: routerBase + val.path }) */
 
       /* 1.0.0-rc.5 */
+      /* 1.0.0-rc.24 */
       if (this.routerMode === 'native') {
+        /* window.dispatchEvent(new PopStateEvent('popstate', { state: history.state })) */
         microApp.router.push({ name: this.name, path: routerBase + val.path })
       } else {
         //虚拟路由开启下，子应用window.__MICRO_APP_BASE_ROUTE__为空，因此子应用路由不受baseroute配置影响（即便baseroute有值）

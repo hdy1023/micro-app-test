@@ -1,6 +1,7 @@
 ## 启动测试环境
 
 ```
+npm run installAll
 npm run start
 ```
 

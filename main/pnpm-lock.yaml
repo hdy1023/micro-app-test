@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@micro-zoe/micro-app':
-    specifier: 1.0.0-rc.5
-    version: 1.0.0-rc.5
+    specifier: 1.0.0-rc.24
+    version: 1.0.0-rc.24
   core-js:
     specifier: ^3.6.5
     version: 3.24.1
@@ -1344,8 +1344,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@micro-zoe/micro-app@1.0.0-rc.5:
-    resolution: {integrity: sha512-Z7Qkp1ZxFc04UYkR6UYPorg/VgACvE0E0Y8tyOKfR9AZmvoSNPdv4TpBFv3FRoYcvMlXW8TnEXhxL1VmCbL+2w==}
+  /@micro-zoe/micro-app@1.0.0-rc.24:
+    resolution: {integrity: sha512-eM2s8bEzxQp+oea6X7KTZvnQ8F48frXV6tYDKj1E0tHPkUIX0vkHwpwHDtOLk4ufAI2c+yRy4ZzZHF7XTS6mZw==}
     dev: false
 
   /@mrmlnc/readdir-enhanced@2.2.1:
@@ -4726,7 +4726,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0

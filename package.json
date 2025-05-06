@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "installAll": "node install-all.js"
   },
   "keywords": [],
   "author": "",

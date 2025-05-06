@@ -5,7 +5,7 @@ const maxBuffer = 5000 * 1024
 const run = () => {
   appPath.forEach(path => {
     const process = childProcess.exec(
-      'yarn run serve',
+      'npm run serve',
       { cwd: path, maxBuffer: maxBuffer },
       (error) => {
         if (error) {
